@@ -1,625 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David Green | Advisory, Tourism & Destination Leadership</title>
-  <meta name="description" content="David Green is a senior advisor and destination leader based in Cape Town, South Africa, with deep experience across tourism, placemaking, culture, and investment." />
-  <style>
-    :root{
-      --bg:#f6f7f5;
-      --card:#ffffff;
-      --text:#15212b;
-      --muted:#5d6a73;
-      --brand:#0b5d73;
-      --brand-dark:#083f4d;
-      --line:#dde5e8;
-      --accent:#d9ecef;
-      --shadow:0 18px 50px rgba(0,0,0,.08);
-      --max:1180px;
-      --radius:22px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial,Helvetica,sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.55;
-    }
-
-    img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
-
-    .container{
-      width:min(var(--max),calc(100% - 32px));
-      margin:0 auto;
-    }
-
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:20;
-      background:rgba(246,247,245,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(221,229,232,.8);
-    }
-
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      padding:16px 0;
-    }
-
-    .brand{
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:.95rem;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    .hero{
-      position:relative;
-      color:#fff;
-      background:
-        linear-gradient(180deg, rgba(6,22,30,.25), rgba(6,22,30,.72)),
-        url('https://media.licdn.com/dms/image/v2/D4D16AQEjAUZZrstEPQ/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1737533582633?e=1775088000&v=beta&t=KNvQ3oXW_hrF9bfMmLJKtGrMZHcD4mjo8HDPqs03jco') center/cover no-repeat;
-    }
-
-    .hero-inner{
-      min-height:86vh;
-      display:grid;
-      grid-template-columns:320px 1fr;
-      gap:34px;
-      align-items:end;
-      padding:48px 0 72px;
-    }
-
-    .profile-card{
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:28px;
-      padding:28px;
-      backdrop-filter:blur(8px);
-      box-shadow:var(--shadow);
-    }
-
-    .profile-card img{
-      width:132px;
-      height:132px;
-      border-radius:50%;
-      object-fit:cover;
-      border:4px solid rgba(255,255,255,.7);
-      margin-bottom:16px;
-    }
-
-    .eyebrow{
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-size:.72rem;
-      opacity:.86;
-      margin:0 0 8px;
-    }
-
-    h1,h2,h3,p{margin:0}
-
-    .profile-card h1{
-      font-size:2rem;
-      line-height:1.02;
-      margin-bottom:10px;
-    }
-
-    .profile-card p{
-      color:rgba(255,255,255,.92);
-    }
-
-    .hero-copy{
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      padding-bottom:10px;
-    }
-
-    .hero-copy h2{
-      font-size:clamp(2.4rem,5vw,5rem);
-      line-height:.97;
-      max-width:11ch;
-    }
-
-    .hero-copy .intro{
-      max-width:700px;
-      font-size:1.08rem;
-      color:rgba(255,255,255,.92);
-    }
-
-    .actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:4px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:14px 22px;
-      border-radius:999px;
-      font-weight:700;
-      transition:.18s ease;
-    }
-
-    .btn:hover{transform:translateY(-2px)}
-
-    .btn-primary{
-      background:#fff;
-      color:var(--text);
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.46);
-      color:#fff;
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      max-width:760px;
-      margin-top:8px;
-    }
-
-    .stat{
-      background:rgba(255,255,255,.1);
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:18px;
-      padding:15px 16px;
-    }
-
-    .stat strong{
-      display:block;
-      font-size:1.3rem;
-      margin-bottom:2px;
-    }
-
-    section{
-      padding:82px 0;
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:22px;
-      margin-bottom:28px;
-      flex-wrap:wrap;
-    }
-
-    .section-head h2{
-      font-size:clamp(1.8rem,3vw,2.7rem);
-    }
-
-    .section-head p{
-      max-width:660px;
-      color:var(--muted);
-    }
-
-    .grid-2,
-    .grid-3{
-      display:grid;
-      gap:22px;
-    }
-
-    .grid-2{grid-template-columns:1.2fr .9fr}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:28px;
-      box-shadow:0 10px 28px rgba(0,0,0,.04);
-    }
-
-    .lead{
-      font-size:1.1rem;
-    }
-
-    .pill-list{
-      display:grid;
-      gap:12px;
-      margin-top:20px;
-    }
-
-    .pill{
-      padding:15px 16px;
-      border-radius:16px;
-      background:#f0f6f7;
-      border:1px solid #dcebed;
-    }
-
-    .label{
-      display:inline-block;
-      font-size:.78rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:var(--brand);
-      font-weight:700;
-      margin-bottom:8px;
-    }
-
-    .muted{color:var(--muted)}
-
-    .timeline{
-      display:grid;
-      gap:18px;
-    }
-
-    .entry{
-      padding-top:18px;
-      border-top:1px solid var(--line);
-    }
-
-    .entry:first-child{
-      border-top:0;
-      padding-top:0;
-    }
-
-    .role{
-      font-size:1.1rem;
-      font-weight:700;
-      margin-bottom:4px;
-    }
-
-    .meta{
-      color:var(--muted);
-      font-size:.95rem;
-      margin-bottom:8px;
-    }
-
-    .quote{
-      background:linear-gradient(135deg,#0b5d73,#114556);
-      color:#fff;
-    }
-
-    .quote p{
-      font-size:1.25rem;
-      line-height:1.45;
-    }
-
-    .quote small{
-      display:block;
-      margin-top:14px;
-      color:rgba(255,255,255,.8);
-    }
-
-    .contact-box{
-      background:linear-gradient(135deg,#eef7f8,#ffffff);
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:34px;
-      box-shadow:var(--shadow);
-    }
-
-    .contact-buttons{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:20px;
-    }
-
-    .btn-brand{
-      background:var(--brand);
-      color:#fff;
-    }
-
-    .btn-light{
-      background:#fff;
-      color:var(--brand-dark);
-      border:1px solid var(--line);
-    }
-
-    .footer{
-      padding:34px 0 46px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:.94rem;
-    }
-
-    @media (max-width:980px){
-      .hero-inner,
-      .grid-2,
-      .grid-3{
-        grid-template-columns:1fr;
-      }
-      .stats{
-        grid-template-columns:repeat(2,1fr);
-      }
-      .hero{
-        background-position:center;
-      }
-      .hero-inner{
-        min-height:auto;
-      }
-    }
-
-    @media (max-width:640px){
-      .nav{align-items:flex-start}
-      .nav-links{gap:12px}
-      .stats{grid-template-columns:1fr}
-      section{padding:64px 0}
-      .profile-card,.card,.contact-box{padding:22px}
-      .hero-inner{padding:34px 0 56px}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Green OBE | Leadership with Vision</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#fdfcfb',
+                        ink: '#1a1a1a',
+                        accent: '#2d5a27',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        body {
+            background-color: #fdfcfb;
+            color: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .section-padding {
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .section-padding {
+                padding-left: 6rem;
+                padding-right: 6rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div id="root"></div>
 
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand">David Green</div>
-      <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#leadership">Leadership</a>
-        <a href="#recognition">Recognition</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.2.0",
+        "react-dom": "https://esm.sh/react-dom@18.2.0",
+        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+        "motion/react": "https://esm.sh/framer-motion@11.0.3",
+        "lucide-react": "https://esm.sh/lucide-react@0.344.0"
+      }
+    }
+    </script>
 
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="profile-card">
-        <img src="https://media.licdn.com/dms/image/v2/D4D03AQErme1MHXooUg/profile-displayphoto-shrink_400_400/B4DZSNDfrWG8Ag-/0/1737533292262?e=1775088000&v=beta&t=sUyuyJejCDNCxrujwTYe1U97LePsX4OZ2vrvh-h7Vis" alt="David Green portrait" />
-        <p class="eyebrow">Cape Town, South Africa</p>
-        <h1>David Green</h1>
-        <p>Advisor, board leader, and destination executive with deep experience in tourism, culture, urban development, and investment-led placemaking.</p>
-      </div>
+    <script type="module">
+        import React, { useState } from 'react';
+        import { createRoot } from 'react-dom/client';
+        import { motion } from 'motion/react';
+        import { 
+            Award, MapPin, Briefcase, GraduationCap, Linkedin, 
+            ExternalLink, ChevronRight, Menu, X, Globe, Anchor, 
+            Building2, Users 
+        } from 'lucide-react';
 
-      <div class="hero-copy">
-        <p class="eyebrow">Tourism • Placemaking • Culture • Investment</p>
-        <h2>Leadership shaped by place, purpose, and long-term impact.</h2>
-        <p class="intro">David Green is best known for his long tenure leading the V&amp;A Waterfront in Cape Town, alongside wider board and advisory work spanning tourism, culture, economic growth, and destination development.</p>
+        const PROFILE_IMAGE = "https://media.licdn.com/dms/image/v2/D4D03AQErme1MHXooUg/profile-displayphoto-shrink_400_400/B4DZSNDfrWG8Ag-/0/1737533292262?e=1775088000&v=beta&t=sUyuyJejCDNCxrujwTYe1U97LePsX4OZ2vrvh-h7Vis";
+        const COVER_IMAGE = "https://media.licdn.com/dms/image/v2/D4D16AQEjAUZZrstEPQ/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1737533582633?e=1775088000&v=beta&t=KNvQ3oXW_hrF9bfMmLJKtGrMZHcD4mjo8HDPqs03jco";
+        const CAPE_TOWN_STOCK = "https://capetown.citypass.co.za/wp-content/uploads/2022/05/cb282962ee969f619945d454b9e11f32.jpeg";
 
-        <div class="actions">
-          <a href="#contact" class="btn btn-primary">Contact</a>
-          <a href="#experience" class="btn btn-secondary">View CV</a>
-        </div>
+        const EXPERIENCE = [
+            {
+                company: "V&A Waterfront",
+                role: "Advisor to V & A Waterfront",
+                period: "Jan 2026 - Present",
+                description: "Providing strategic advisory services following a 17-year tenure as CEO, ensuring a smooth leadership transition.",
+                type: "Full-time",
+                location: "South Africa • On-site"
+            },
+            {
+                company: "V&A Waterfront",
+                role: "CEO",
+                period: "Feb 2009 - Jan 2026",
+                description: "Led the transformation of the V&A Waterfront into Africa's most visited destination and a global benchmark for mixed-use waterfront development.",
+                type: "Full-time",
+                location: "Cape Town"
+            },
+            {
+                company: "Zeitz Museum of Contemporary Art Africa",
+                role: "Board of Trustee",
+                period: "Dec 2013 - Present",
+                description: "Founding trustee of the world's largest museum dedicated to contemporary art from Africa and its diaspora.",
+                location: "Cape Town"
+            },
+            {
+                company: "Two Oceans Aquarium",
+                role: "Chairman and Trustee",
+                period: "Feb 2009 - Present",
+                description: "Overseeing governance and strategic direction for one of Cape Town's premier environmental and educational institutions.",
+                location: "Cape Town"
+            },
+            {
+                company: "Wesgro",
+                role: "Chairman",
+                period: "Apr 2022 - Aug 2023",
+                description: "Chaired the official tourism, trade, and investment promotion agency for Cape Town and the Western Cape.",
+                type: "Part-time",
+                location: "Cape Town, South Africa"
+            }
+        ];
 
-        <div class="stats">
-          <div class="stat"><strong>17 Years</strong><span>Leading V&amp;A Waterfront as CEO</span></div>
-          <div class="stat"><strong>2026–Now</strong><span>Advisor to V&amp;A Waterfront</span></div>
-          <div class="stat"><strong>12+ Years</strong><span>Trustee at Zeitz MOCAA</span></div>
-          <div class="stat"><strong>2025</strong><span>Officer of the Order of the British Empire</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+        const HONORS = [
+            {
+                title: "Officer of the Order of the British Empire (OBE)",
+                issuer: "United Kingdom Government",
+                date: "Jan 2025",
+                description: "Awarded for outstanding contributions to UK-South Africa relations as CEO of the V&A Waterfront and Chairman of Zeitz MOCAA."
+            }
+        ];
 
-  <main>
-    <section id="about">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow" style="color:var(--brand);opacity:1;">About</p>
-            <h2>Senior leadership across destination, culture, and civic impact</h2>
-          </div>
-          <p>Based in Cape Town, David Green has built a career at the intersection of destination stewardship, commercial development, public value, and cultural leadership.</p>
-        </div>
+        function App() {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-        <div class="grid-2">
-          <div class="card">
-            <p class="lead">After nearly 17 years as CEO of the V&amp;A Waterfront, David moved into an advisory role in 2026. His work reflects a long-term commitment to building places that are economically strong, culturally relevant, and globally competitive.</p>
+            return (
+                <div className="min-h-screen selection:bg-accent/20 selection:text-accent">
+                    {/* Navigation */}
+                    <nav className="fixed top-0 w-full z-50 glass border-b border-ink/5">
+                        <div className="max-w-7xl mx-auto px-8 h-24 flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                <span className="font-serif text-2xl font-semibold tracking-tight">David Green <span className="text-accent">OBE</span></span>
+                            </div>
+                            
+                            <div className="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest font-medium">
+                                <a href="#about" className="hover:text-accent transition-colors">About</a>
+                                <a href="#experience" className="hover:text-accent transition-colors">Experience</a>
+                                <a href="#honors" className="hover:text-accent transition-colors">Honors</a>
+                                <a href="#contact" className="px-5 py-2 bg-ink text-white rounded-full hover:bg-accent transition-all">Connect</a>
+                            </div>
 
-            <div class="pill-list">
-              <div class="pill"><strong>Current base:</strong> Cape Town, Western Cape, South Africa</div>
-              <div class="pill"><strong>Core areas:</strong> Tourism, placemaking, real estate development, governance, culture, and strategic growth</div>
-              <div class="pill"><strong>Education:</strong> INSEAD; Institute of Chartered Accountants Scotland</div>
-              <div class="pill"><strong>Languages:</strong> Portuguese and Spanish</div>
-            </div>
-          </div>
+                            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                {isMenuOpen ? <X /> : <Menu />}
+                            </button>
+                        </div>
+                    </nav>
 
-          <div class="card">
-            <span class="label">Focus areas</span>
-            <div class="timeline">
-              <div class="entry">
-                <div class="role">Destination leadership</div>
-                <p class="muted">Growing globally recognised places through strong commercial and civic stewardship.</p>
-              </div>
-              <div class="entry">
-                <div class="role">Cultural institutions</div>
-                <p class="muted">Supporting museums, marine education, and public-facing institutions with long-term social value.</p>
-              </div>
-              <div class="entry">
-                <div class="role">Economic development</div>
-                <p class="muted">Helping position Cape Town and the Western Cape for tourism, investment, and global visibility.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                    {/* Mobile Menu */}
+                    {isMenuOpen && (
+                        <motion.div 
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="fixed inset-0 z-40 bg-paper pt-24 px-6 md:hidden"
+                        >
+                            <div className="flex flex-col gap-6 text-2xl font-serif">
+                                <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
+                                <a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a>
+                                <a href="#honors" onClick={() => setIsMenuOpen(false)}>Honors</a>
+                                <a href="#contact" onClick={() => setIsMenuOpen(false)}>Connect</a>
+                            </div>
+                        </motion.div>
+                    )}
 
-    <section id="experience">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow" style="color:var(--brand);opacity:1;">Experience</p>
-            <h2>Selected roles</h2>
-          </div>
-          <p>Executive, board, and advisory roles across tourism, culture, and strategic development.</p>
-        </div>
+                    {/* Hero Section */}
+                    <header className="relative h-screen flex items-center overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            <img 
+                                src={COVER_IMAGE} 
+                                alt="V&A Waterfront Background" 
+                                className="w-full h-full object-cover opacity-40 grayscale-[0.5]"
+                                referrerPolicy="no-referrer"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-b from-paper/20 via-transparent to-paper" />
+                        </div>
 
-        <div class="grid-2">
-          <div class="card">
-            <div class="timeline">
-              <div class="entry">
-                <div class="role">Advisor to V&amp;A Waterfront</div>
-                <div class="meta">January 2026 – Present</div>
-                <p class="muted">Providing continuity and strategic support following a long CEO tenure.</p>
-              </div>
+                        <div className="relative z-10 max-w-7xl mx-auto px-8 w-full">
+                            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8 }}
+                                >
+                                    <span className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-full text-xs font-bold uppercase tracking-widest mb-8">
+                                        City Ambassador for Cape Town
+                                    </span>
+                                    <h1 className="text-7xl md:text-8xl xl:text-9xl font-serif leading-[0.95] mb-10">
+                                        Leadership <br />
+                                        <span className="italic text-accent">with Vision.</span>
+                                    </h1>
+                                    <p className="text-xl md:text-2xl text-ink/70 font-light leading-relaxed mb-12 max-w-xl">
+                                        Former CEO of the V&A Waterfront, dedicated to urban innovation, cultural preservation, and global promotion of South Africa.
+                                    </p>
+                                    <div className="flex flex-wrap gap-6">
+                                        <a href="#about" className="px-10 py-4 bg-ink text-white rounded-full font-medium hover:bg-accent transition-all flex items-center gap-2 shadow-lg shadow-ink/10">
+                                            Learn More <ChevronRight size={18} />
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/david-green-obe/" target="_blank" rel="noopener noreferrer" className="px-10 py-4 border border-ink/20 rounded-full font-medium hover:bg-ink/5 transition-all flex items-center gap-2">
+                                            <Linkedin size={18} /> LinkedIn
+                                        </a>
+                                    </div>
+                                </motion.div>
 
-              <div class="entry">
-                <div class="role">Chief Executive Officer, V&amp;A Waterfront</div>
-                <div class="meta">February 2009 – January 2026</div>
-                <p class="muted">Led one of Africa’s best-known mixed-use, tourism, retail, and cultural destinations for nearly 17 years.</p>
-              </div>
+                                {/* Profile Image Column */}
+                                <motion.div 
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.2, duration: 1 }}
+                                    className="hidden lg:block relative"
+                                >
+                                    <div className="relative w-80 h-80 xl:w-96 xl:h-96 mx-auto">
+                                        <div className="absolute inset-0 border border-accent/30 rounded-full animate-spin-slow" />
+                                        <img 
+                                            src={PROFILE_IMAGE} 
+                                            alt="David Green" 
+                                            className="w-full h-full object-cover rounded-full border-8 border-paper shadow-2xl"
+                                            referrerPolicy="no-referrer"
+                                        />
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </div>
+                    </header>
 
-              <div class="entry">
-                <div class="role">Chairman and Trustee, Two Oceans Aquarium</div>
-                <div class="meta">February 2009 – Present</div>
-                <p class="muted">Supporting marine education, public engagement, and conservation leadership in Cape Town.</p>
-              </div>
-            </div>
-          </div>
+                    {/* About Section */}
+                    <section id="about" className="section-padding bg-white relative overflow-hidden">
+                        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="relative">
+                                <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                                    <img 
+                                        src={CAPE_TOWN_STOCK} 
+                                        alt="Cape Town" 
+                                        className="w-full h-full object-cover"
+                                        referrerPolicy="no-referrer"
+                                    />
+                                </div>
+                                <div className="absolute -bottom-8 -right-8 glass p-8 rounded-2xl max-w-xs shadow-xl hidden md:block">
+                                    <p className="font-serif italic text-lg leading-relaxed">
+                                        "It has been an enormous privilege to lead this extraordinary organisation and to serve as custodian of such a special place at the tip of Africa."
+                                    </p>
+                                </div>
+                            </div>
 
-          <div class="card">
-            <div class="timeline">
-              <div class="entry">
-                <div class="role">Board of Trustee, Zeitz Museum of Contemporary Art Africa</div>
-                <div class="meta">December 2013 – Present</div>
-                <p class="muted">Helping guide one of Africa’s leading contemporary art institutions.</p>
-              </div>
+                            <div>
+                                <h2 className="text-5xl md:text-6xl mb-8">A Legacy of <br /><span className="text-accent italic">Transformation</span></h2>
+                                <div className="space-y-6 text-lg text-ink/70 leading-relaxed font-light">
+                                    <p>
+                                        After almost 17 years as CEO of the V&A Waterfront, David Green has stepped down from his role, leaving behind a legacy of unprecedented growth and social impact. Under his leadership, the Waterfront evolved into a world-class destination for tourism, innovation, and investment.
+                                    </p>
+                                    <p>
+                                        As a newly appointed City Ambassador for Cape Town, David continues to promote the city on a global stage. His vision is to champion Cape Town as a place of hope and a world-class destination.
+                                    </p>
+                                    <div className="grid grid-cols-2 gap-8 pt-8">
+                                        <div>
+                                            <h4 className="font-serif text-3xl text-ink mb-1">17 Years</h4>
+                                            <p className="text-sm uppercase tracking-widest font-bold text-accent">CEO Tenure</p>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-serif text-3xl text-ink mb-1">OBE</h4>
+                                            <p className="text-sm uppercase tracking-widest font-bold text-accent">Honored in 2025</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-              <div class="entry">
-                <div class="role">Chairman, Wesgro</div>
-                <div class="meta">April 2022 – August 2023</div>
-                <p class="muted">Contributed to the Western Cape’s tourism, trade, and investment agenda.</p>
-              </div>
+                    {/* Experience Section */}
+                    <section id="experience" className="section-padding bg-paper">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-6">
+                                <div>
+                                    <h2 className="text-5xl md:text-6xl">Professional <br /><span className="text-accent italic">Journey</span></h2>
+                                </div>
+                                <p className="max-w-md text-ink/60 font-light">
+                                    A career defined by strategic leadership in real estate development, destination management, and cultural governance.
+                                </p>
+                            </div>
 
-              <div class="entry">
-                <div class="role">Non Executive, Public Investment Fund</div>
-                <div class="meta">April 2017 – September 2017</div>
-                <p class="muted">Advised on entertainment and leisure initiatives linked to the Saudi 2030 plan.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                            <div className="grid gap-4">
+                                {EXPERIENCE.map((item, index) => (
+                                    <motion.div 
+                                        key={index}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="group grid md:grid-cols-[1fr_2fr_1fr] gap-8 py-12 border-b border-ink/10 hover:bg-white/50 transition-colors px-4 rounded-xl"
+                                    >
+                                        <div>
+                                            <p className="text-sm font-bold uppercase tracking-widest text-accent mb-2">{item.period}</p>
+                                            <p className="text-ink/50 flex items-center gap-1 text-sm"><MapPin size={14} /> {item.location}</p>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-3xl mb-3">{item.role}</h3>
+                                            <p className="text-ink/70 font-light leading-relaxed max-w-xl">{item.description}</p>
+                                        </div>
+                                        <div className="flex md:justify-end items-start">
+                                            <span className="font-serif text-xl italic text-ink/40 group-hover:text-accent transition-colors">{item.company}</span>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
 
-    <section id="leadership">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow" style="color:var(--brand);opacity:1;">Leadership</p>
-            <h2>What defines his work</h2>
-          </div>
-          <p>A career shaped by place-led strategy, trusted governance, and public-facing institutions that matter to cities and communities.</p>
-        </div>
+                    {/* Honors & Awards */}
+                    <section id="honors" className="section-padding bg-ink text-paper overflow-hidden relative">
+                        <div className="absolute top-0 right-0 p-20 opacity-10 pointer-events-none">
+                            <Award size={400} />
+                        </div>
+                        
+                        <div className="max-w-7xl mx-auto relative z-10">
+                            <div className="max-w-3xl">
+                                <h2 className="text-5xl md:text-7xl mb-12">Honors & <br /><span className="text-accent italic">Recognition</span></h2>
+                                
+                                {HONORS.map((honor, index) => (
+                                    <div key={index} className="bg-white/5 border border-white/10 p-10 rounded-3xl backdrop-blur-sm">
+                                        <div className="flex items-center gap-4 mb-6">
+                                            <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center text-accent">
+                                                <Award size={32} />
+                                            </div>
+                                            <div>
+                                                <h3 className="text-3xl font-serif">{honor.title}</h3>
+                                                <p className="text-accent uppercase tracking-widest text-xs font-bold">{honor.issuer} • {honor.date}</p>
+                                            </div>
+                                        </div>
+                                        <p className="text-xl font-light leading-relaxed text-paper/70">
+                                            {honor.description}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
 
-        <div class="grid-3">
-          <div class="card">
-            <span class="label">Tourism & destination</span>
-            <h3 style="margin-bottom:10px;">Building globally relevant destinations</h3>
-            <p class="muted">Deep experience in shaping destinations that balance visitor appeal, local value, commercial strength, and long-term brand credibility.</p>
-          </div>
+                    {/* Roles & Boards Grid */}
+                    <section className="section-padding bg-white">
+                        <div className="max-w-7xl mx-auto">
+                            <h2 className="text-4xl font-serif mb-12">Strategic Roles & Board Memberships</h2>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {[
+                                    { title: "Zeitz MOCAA", role: "Board of Trustee", icon: <Building2 /> },
+                                    { title: "Two Oceans Aquarium", role: "Chairman & Trustee", icon: <Anchor /> },
+                                    { title: "Wesgro", role: "Former Chairman", icon: <Globe /> },
+                                    { title: "City Ambassador", role: "Cape Town", icon: <MapPin /> },
+                                    { title: "Public Investment Fund", role: "Non-Executive Advisor", icon: <Users /> },
+                                    { title: "ICAS", role: "Chartered Accountant", icon: <GraduationCap /> }
+                                ].map((item, i) => (
+                                    <div key={i} className="p-8 border border-ink/5 rounded-2xl hover:border-accent/30 hover:shadow-lg transition-all group">
+                                        <div className="text-accent mb-4 group-hover:scale-110 transition-transform duration-300">
+                                            {React.cloneElement(item.icon, { size: 32 })}
+                                        </div>
+                                        <h4 className="text-xl font-serif mb-1">{item.title}</h4>
+                                        <p className="text-sm text-ink/50 uppercase tracking-widest font-bold">{item.role}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
 
-          <div class="card">
-            <span class="label">Culture & civic value</span>
-            <h3 style="margin-bottom:10px;">Supporting institutions with purpose</h3>
-            <p class="muted">A track record of leadership across art, marine education, and culture-led platforms that strengthen the identity and vitality of place.</p>
-          </div>
+                    {/* Footer / Contact */}
+                    <footer id="contact" className="section-padding bg-paper border-t border-ink/5">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="grid lg:grid-cols-2 gap-20">
+                                <div>
+                                    <h2 className="text-6xl font-serif mb-8">Let's <span className="italic text-accent">Connect.</span></h2>
+                                    <p className="text-xl text-ink/60 font-light mb-12 max-w-md">
+                                        Open to strategic advisory, speaking engagements, and initiatives that promote the growth of Cape Town and the African continent.
+                                    </p>
+                                    <div className="flex gap-6">
+                                        <a href="https://www.linkedin.com/in/david-green-obe/" className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center hover:bg-ink hover:text-white transition-all">
+                                            <Linkedin size={24} />
+                                        </a>
+                                        <a href="#" className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center hover:bg-ink hover:text-white transition-all">
+                                            <Globe size={24} />
+                                        </a>
+                                    </div>
+                                </div>
 
-          <div class="card">
-            <span class="label">Strategy & governance</span>
-            <h3 style="margin-bottom:10px;">Bringing steady board-level leadership</h3>
-            <p class="muted">Known for helping organisations navigate growth, transition, stakeholder trust, and long-range strategic direction.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+                                <div className="bg-white p-10 rounded-3xl shadow-xl border border-ink/5">
+                                    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            <div className="space-y-2">
+                                                <label className="text-xs font-bold uppercase tracking-widest text-ink/50">Full Name</label>
+                                                <input type="text" className="w-full px-4 py-3 rounded-xl border border-ink/10 focus:border-accent outline-none transition-colors" placeholder="John Doe" />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-xs font-bold uppercase tracking-widest text-ink/50">Email Address</label>
+                                                <input type="email" className="w-full px-4 py-3 rounded-xl border border-ink/10 focus:border-accent outline-none transition-colors" placeholder="john@example.com" />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-bold uppercase tracking-widest text-ink/50">Subject</label>
+                                            <input type="text" className="w-full px-4 py-3 rounded-xl border border-ink/10 focus:border-accent outline-none transition-colors" placeholder="Strategic Advisory" />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-bold uppercase tracking-widest text-ink/50">Message</label>
+                                            <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-ink/10 focus:border-accent outline-none transition-colors resize-none" placeholder="How can we collaborate?"></textarea>
+                                        </div>
+                                        <button className="w-full py-4 bg-ink text-white rounded-xl font-bold hover:bg-accent transition-all">
+                                            Send Message
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
 
-    <section id="recognition">
-      <div class="container">
-        <div class="grid-2">
-          <div class="card quote">
-            <p>Leadership is not only about managing assets. It is about shaping places people care about, helping them thrive over time, and leaving them stronger for what comes next.</p>
-            <small>Professional summary theme</small>
-          </div>
-
-          <div class="card">
-            <span class="label">Recognition</span>
-            <div class="timeline">
-              <div class="entry">
-                <div class="role">Officer of the Order of the British Empire (OBE)</div>
-                <div class="meta">United Kingdom Government • January 2025</div>
-                <p class="muted">Recognised for outstanding contributions to UK–South Africa relations through leadership connected to the V&amp;A Waterfront and Zeitz MOCAA.</p>
-              </div>
-
-              <div class="entry">
-                <div class="role">Cape Town City Ambassador</div>
-                <div class="meta">Recent appointment</div>
-                <p class="muted">Selected to help promote Cape Town internationally as a city of tourism, innovation, and investment.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <div class="section-head" style="margin-bottom:0;">
-            <div>
-              <p class="eyebrow" style="color:var(--brand);opacity:1;">Contact</p>
-              <h2>Get in touch</h2>
-            </div>
-            <p>Use this section for direct outreach. Replace the email and phone placeholders below with David’s preferred contact details.</p>
-          </div>
-
-          <div class="grid-2" style="margin-top:28px;">
-            <div class="card" style="box-shadow:none;">
-              <div class="timeline">
-                <div class="entry">
-                  <div class="role">Email</div>
-                  <div class="meta">david@example.com</div>
+                            <div className="mt-24 pt-8 border-t border-ink/5 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-ink/40">
+                                <p>© 2026 David Green OBE. All rights reserved.</p>
+                                <div className="flex gap-8">
+                                    <a href="#" className="hover:text-accent">Privacy Policy</a>
+                                    <a href="#" className="hover:text-accent">Terms of Service</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
                 </div>
-                <div class="entry">
-                  <div class="role">Phone</div>
-                  <div class="meta">+27 00 000 0000</div>
-                </div>
-                <div class="entry">
-                  <div class="role">Location</div>
-                  <div class="meta">Cape Town, Western Cape, South Africa</div>
-                </div>
-              </div>
-            </div>
+            );
+        }
 
-            <div class="card" style="box-shadow:none;">
-              <h3 style="margin-bottom:10px;">Best suited for</h3>
-              <p class="muted">Advisory roles, speaking opportunities, destination strategy, tourism leadership, board appointments, and strategic conversations tied to placemaking, culture, and investment.</p>
-              <div class="contact-buttons">
-                <a href="mailto:david@example.com" class="btn btn-brand">Email David</a>
-                <a href="tel:+270000000000" class="btn btn-light">Call</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      David Green • Advisory, tourism, placemaking, culture, and destination leadership
-    </div>
-  </footer>
-
+        const container = document.getElementById('root');
+        const root = createRoot(container);
+        root.render(<App />);
+    </script>
 </body>
 </html>
